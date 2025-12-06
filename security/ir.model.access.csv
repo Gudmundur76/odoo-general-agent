@@ -1,0 +1,9 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_general_agent_user,general.agent.user,model_general_agent,base.group_user,1,1,1,0
+access_general_agent_manager,general.agent.manager,model_general_agent,base.group_system,1,1,1,1
+access_general_agent_task_user,general.agent.task.user,model_general_agent_task,base.group_user,1,1,1,0
+access_general_agent_task_manager,general.agent.task.manager,model_general_agent_task,base.group_system,1,1,1,1
+access_general_agent_config_user,general.agent.config.user,model_general_agent_config,base.group_user,1,0,0,0
+access_general_agent_config_manager,general.agent.config.manager,model_general_agent_config,base.group_system,1,1,1,1
+access_general_agent_tool_user,general.agent.tool.user,model_general_agent_tool,base.group_user,1,0,0,0
+access_general_agent_tool_manager,general.agent.tool.manager,model_general_agent_tool,base.group_system,1,1,1,1

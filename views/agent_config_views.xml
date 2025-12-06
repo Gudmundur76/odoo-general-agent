@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    
+    <!-- Config Form View -->
+    <record id="view_general_agent_config_form" model="ir.ui.view">
+        <field name="name">general.agent.config.form</field>
+        <field name="model">general.agent.config</field>
+        <field name="arch" type="xml">
+            <form string="Agent Configuration">
+                <sheet>
+                    <div class="oe_title">
+                        <label for="name" class="oe_edit_only"/>
+                        <h1><field name="name"/></h1>
+                    </div>
+                    <group>
+                        <field name="active"/>
+                    </group>
+                    <notebook>
+                        <page string="LLM API Keys" name="llm_keys">
+                            <group>
+                                <group string="OpenAI">
+                                    <field name="openai_api_key" password="True"/>
+                                    <button name="action_test_openai" string="Test Connection" type="object" class="btn-link"/>
+                                </group>
+                                <group string="Anthropic">
+                                    <field name="anthropic_api_key" password="True"/>
+                                    <button name="action_test_anthropic" string="Test Connection" type="object" class="btn-link"/>
+                                </group>
+                            </group>
+                            <group>
+                                <group string="Google">
+                                    <field name="google_api_key" password="True"/>
+                                    <button name="action_test_google" string="Test Connection" type="object" class="btn-link"/>
+                                </group>
+                                <group string="Local LLM">
+                                    <field name="local_llm_url"/>
+                                    <field name="local_llm_model"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page string="External APIs" name="external_apis">
+                            <group>
+                                <group string="Notus (Pharma Intelligence)">
+                                    <field name="notus_api_url"/>
+                                    <field name="notus_api_key" password="True"/>
+                                </group>
+                                <group string="Discovery (Drug Discovery)">
+                                    <field name="discovery_api_url"/>
+                                    <field name="discovery_api_key" password="True"/>
+                                </group>
+                            </group>
+                            <group>
+                                <group string="n8n Webhooks">
+                                    <field name="n8n_webhook_base_url"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page string="Settings" name="settings">
+                            <group>
+                                <group string="Features">
+                                    <field name="enable_web_search"/>
+                                    <field name="enable_code_execution"/>
+                                </group>
+                                <group string="Rate Limiting">
+                                    <field name="max_tasks_per_hour"/>
+                                    <field name="max_tokens_per_day"/>
+                                </group>
+                            </group>
+                            <group>
+                                <group string="Logging">
+                                    <field name="log_level"/>
+                                </group>
+                                <group string="Monitoring">
+                                    <field name="enable_sentry"/>
+                                    <field name="sentry_dsn" password="True" attrs="{'invisible': [('enable_sentry', '=', False)]}"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page string="Security" name="security">
+                            <group>
+                                <field name="allowed_domains" widget="text" placeholder="example.com, api.example.com"/>
+                                <field name="blocked_domains" widget="text" placeholder="malicious.com, spam.com"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    
+    <!-- Config Tree View -->
+    <record id="view_general_agent_config_tree" model="ir.ui.view">
+        <field name="name">general.agent.config.tree</field>
+        <field name="model">general.agent.config</field>
+        <field name="arch" type="xml">
+            <tree string="Agent Configurations">
+                <field name="name"/>
+                <field name="active"/>
+            </tree>
+        </field>
+    </record>
+    
+    <!-- Config Action -->
+    <record id="action_general_agent_config" model="ir.actions.act_window">
+        <field name="name">Configuration</field>
+        <field name="res_model">general.agent.config</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Configure your AI Agent
+            </p>
+            <p>
+                Set up API keys for LLMs and external services.
+            </p>
+        </field>
+    </record>
+    
+</odoo>

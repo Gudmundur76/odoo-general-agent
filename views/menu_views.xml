@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    
+    <!-- Root Menu -->
+    <menuitem id="menu_general_agent_root"
+              name="AI Agent"
+              sequence="10"
+              web_icon="general_agent,static/description/icon.png"/>
+    
+    <!-- Agents Menu -->
+    <menuitem id="menu_general_agent_agents"
+              name="Agents"
+              parent="menu_general_agent_root"
+              action="action_general_agent"
+              sequence="10"/>
+    
+    <!-- Tasks Menu -->
+    <menuitem id="menu_general_agent_tasks"
+              name="Tasks"
+              parent="menu_general_agent_root"
+              action="action_general_agent_task"
+              sequence="20"/>
+    
+    <!-- Configuration Menu -->
+    <menuitem id="menu_general_agent_config_root"
+              name="Configuration"
+              parent="menu_general_agent_root"
+              sequence="100"/>
+    
+    <menuitem id="menu_general_agent_config"
+              name="Settings"
+              parent="menu_general_agent_config_root"
+              action="action_general_agent_config"
+              sequence="10"/>
+    
+</odoo>
